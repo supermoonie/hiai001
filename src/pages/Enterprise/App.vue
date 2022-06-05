@@ -7,9 +7,9 @@
 <script>
 
 export default {
-  name: 'About',
+  name: 'Enterprise',
   metaInfo: {
-    title: '关于'
+    title: '企业定制'
   }
 }
 </script>

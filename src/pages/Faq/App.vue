@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app" class="container">
     <h1>页面建设中</h1>
   </div>
 </template>
@@ -7,9 +7,9 @@
 <script>
 
 export default {
-  name: 'About',
+  name: 'Faq',
   metaInfo: {
-    title: '关于'
+    title: '常见问题'
   }
 }
 </script>

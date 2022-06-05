@@ -7,9 +7,9 @@
 <script>
 
 export default {
-  name: 'About',
+  name: 'Proxy',
   metaInfo: {
-    title: '关于'
+    title: '代理'
   }
 }
 </script>

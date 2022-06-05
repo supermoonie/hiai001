@@ -7,9 +7,9 @@
 <script>
 
 export default {
-  name: 'About',
+  name: 'Help',
   metaInfo: {
-    title: '关于'
+    title: '帮助中心'
   }
 }
 </script>
