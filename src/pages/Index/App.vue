@@ -87,7 +87,7 @@
 
     <Footer/>
 
-    <div class="qp mask" style="display: none;"></div>
+    <div class="qp mask" style="display: none;" @click="closeVideo"></div>
     <div class="qp close-video" style="display: none;"><img src="../../assets/close.png" @click="closeVideo" style="width: 30px; cursor: pointer;" alt=""></div>
     <div class="qp watch-video" style="display: none;">
       <video id="media" poster="../../assets/video-play-1.png"
@@ -95,12 +95,16 @@
         你的浏览器不支持 <code>video</code> 标签.
       </video>
     </div>
+
   </div>
 </template>
 
 <script>
 export default {
   name: 'Home',
+  metaInfo: {
+    title: '快剪官网 - 新一代批量视频剪辑平台'
+  },
   data: () => {
     return {
       comments: [

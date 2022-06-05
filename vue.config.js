@@ -1,31 +1,24 @@
 const CompressionPlugin = require('compression-webpack-plugin')
 const FileManagerPlugin = require('filemanager-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const glob = require('glob')
+
+const PAGES = {};
+glob.sync('src/pages/**/main.js').forEach(path => {
+    const item = path.split('/')[2]
+    PAGES[item.toLowerCase()] = {
+        entry: `./src/pages/${item}/main.js`,
+        template: `public/index.html`,
+        chunks: ['chunk-vendors', 'chunk-common', item.toLowerCase()]
+    }
+})
 module.exports = {
-    pages: {
-        'index': {
-            entry: './src/pages/Home/main.js',
-            template: 'public/index.html',
-            title: 'Home',
-            chunks: [ 'chunk-vendors', 'chunk-common', 'index' ]
-        },
-        'about': {
-            entry: './src/pages/About/main.js',
-            template: 'public/index.html',
-            title: 'About',
-            chunks: [ 'chunk-vendors', 'chunk-common', 'about' ]
-        },
-        'buy': {
-            entry: './src/pages/Buy/main.js',
-            template: 'public/index.html',
-            title: 'Buy',
-            chunks: [ 'chunk-vendors', 'chunk-common', 'buy' ]
-        }
-    },
     // 基本路径
     // 输出文件目录
     outputDir: 'dist',
     publicPath: '',
     filenameHashing: true,
+    pages: PAGES,
     // eslint-loader 是否在保存的时候检查
     lintOnSave: true,
     // use the full build with in-browser compiler
@@ -51,7 +44,8 @@ module.exports = {
             .end()
     },
     configureWebpack: (config) => {
-        process.argv[2] && 'build' === process.argv[2] && config.plugins.push(new FileManagerPlugin({
+        const build = process.argv[2] && 'build' === process.argv[2]
+        build && config.plugins.push(new FileManagerPlugin({
             events: {
                 onEnd: {
                     delete: [
@@ -71,6 +65,24 @@ module.exports = {
             threshold: 10240, // 归档需要进行压缩的文件大小最小值，我这个是10K以上的进行压缩
             deleteOriginalAssets: false // 是否删除原文件
         }))
+        build && config.plugins.push(
+            new UglifyJsPlugin({
+                uglifyOptions: {
+                    output: {
+                        comments: false
+                    },
+                    compress: {
+                        drop_debugger: true,
+                        drop_console: true,
+                        pure_funcs: ['console.log']
+                    }
+                },
+                sourceMap: false,
+                parallel: true
+            })
+        )
+        build && (config.output.filename = `js/[name].[contenthash].js`)
+        build && (config.output.chunkFilename = `js/[name].[contenthash].js`)
     },
     // 生产环境是否生成 sourceMap 文件
     productionSourceMap: false,
@@ -101,6 +113,5 @@ module.exports = {
         }
     },
     // 第三方插件配置
-    pluginOptions: {
-    }
+    pluginOptions: {}
 }

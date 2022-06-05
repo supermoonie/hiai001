@@ -7,7 +7,10 @@
 <script>
 
 export default {
-  name: 'Buy'
+  name: 'Buy',
+  metaInfo: {
+    title: '购买'
+  }
 }
 </script>
 
