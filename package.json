@@ -9,6 +9,7 @@
     "build:prod": "vue-cli-service build --mode prod"
   },
   "dependencies": {
+    "@babel/runtime": "^7.18.3",
     "axios": "^0.21.0",
     "babel-polyfill": "^6.26.0",
     "core-js": "^3.4.3",

@@ -1,9 +1,9 @@
 let BASE_URL = ''
 switch (process.env.NODE_ENV) {
-  case 'development':
-    BASE_URL = 'http://127.0.0.1:9002'
+  case 'dev':
+    BASE_URL = 'http://127.0.0.1:8080'
     break
-  case 'production':
+  case 'prod':
     BASE_URL = 'http://hiai001.com'
     break
 }

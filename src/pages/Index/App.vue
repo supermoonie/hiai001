@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <Header/>
 
     <div class="dark">
@@ -66,9 +66,10 @@
       </div>
     </div>
 
-    <div class="dark">
+    <div class="dark" id="download">
       <div class="container">
         <div class="platform">
+
           <div>
             <div class="logo iconfont icon-windows"></div>
             <div class="remark">Windows 7, 10, 11</div>
