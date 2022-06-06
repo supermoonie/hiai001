@@ -11,8 +11,8 @@
             </div>
           </el-col>
         </el-row>
-        <el-row type="flex" justify="center" align="middle" :gutter="20">
-          <el-col v-for="(cardInfo, index) in cardInfos" :key="index" :span="span" >
+        <el-row :gutter="20">
+          <el-col :xs="24" v-for="(cardInfo, index) in cardInfos" :key="index" :sm="span" :md="span" :lg="span" :xl="span" style="padding: 10px;">
             <el-card shadow="hover">
               <div class="card-name">{{cardInfo['cardName']}}</div>
               <div class="card-desc">{{cardInfo['cardDesc']}} | {{cardInfo['cardRemark']}}</div>
@@ -40,13 +40,13 @@
 
     <div>
       <div class="container">
-        <el-row type="flex" justify="center" align="middle" :gutter="20">
-          <el-col :span="12">
+        <el-row :gutter="20">
+          <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" style="padding: 10px;">
             <el-card shadow="never" style="height: 227px">
               <div class="faq-title">常见问题：</div>
               <div class="faq-content">
                 <p class="faq-item">
-                  1、请妥善保管开好，勿将卡号泄露给他人
+                  1、请妥善保管卡号，勿泄露给他人
                 </p>
                 <p class="faq-item">
                   2、卡号未激活，可联系客服进行退款
@@ -55,12 +55,12 @@
                   3、电脑重装系统，相当于更换设备
                 </p>
                 <p class="faq-item">
-                  4、支付过程中如遇到任何问题，请联系客服解决
+                  4、如遇到任何问题，请联系客服解决
                 </p>
               </div>
             </el-card>
           </el-col>
-          <el-col :span="12">
+          <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" style="padding: 10px;">
             <el-card shadow="never">
               <el-row type="flex" justify="center" align="middle">
                 <el-col :span="12">
@@ -135,6 +135,7 @@ export default {
 <style lang="less">
 @import url('../../styles/global.css');
 @import url('../../styles/iconfont.css');
+
 .container {
   padding: 30px 16px;
 }
