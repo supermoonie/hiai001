@@ -1,6 +1,6 @@
 <template>
-  <div id="app" class="container">
-    <h1>页面建设中</h1>
+  <div>
+    <el-empty description="页面建设中"></el-empty>
   </div>
 </template>
 

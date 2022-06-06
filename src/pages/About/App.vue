@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>页面建设中</h1>
+    <el-empty description="页面建设中"></el-empty>
   </div>
 </template>
 

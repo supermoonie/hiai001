@@ -3,7 +3,7 @@ import App from './App.vue'
 import VueMeta from 'vue-meta'
 import {Row, Col, Card, Button, Image, Loading, Message} from "element-ui"
 import 'element-ui/lib/theme-chalk/index.css'
-import 'element-ui/lib/theme-chalk/display.css';
+import 'element-ui/lib/theme-chalk/display.css'
 
 Vue.use(Row)
 Vue.use(Col)
