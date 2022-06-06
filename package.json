@@ -17,6 +17,7 @@
     "qs": "^6.10.1",
     "vue": "^2.6.10",
     "vue-fragment": "^1.5.2",
+    "vue-qrcode-component": "^2.1.1",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
