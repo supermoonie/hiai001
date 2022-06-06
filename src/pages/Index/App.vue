@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header/>
+    <Header :current="'index'"/>
 
     <div class="dark">
       <div class="container">
