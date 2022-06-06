@@ -16,7 +16,7 @@
       </div>
       <div class="footer-item">
         <div class="footer-classify">合作与资源</div>
-<!--        <div><a href="ppt.html" target="_blank">向团队介绍 FastCut</a></div>-->
+        <!--        <div><a href="ppt.html" target="_blank">向团队介绍 FastCut</a></div>-->
         <div><a href="enterprise.html" target="_blank">企业定制</a></div>
         <div><a href="proxy.html" target="_blank">代理</a></div>
       </div>
@@ -27,21 +27,15 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class="copyright">
-        © {{currentYear}} 上海序研科技工作室<a href="https://beian.miit.gov.cn/" target="_blank">沪ICP备2022012136号-1</a>
-      </div>
-    </div>
+    <Copyright/>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Footer',
-  data: () => {
-    return {
-      currentYear: new Date().getFullYear()
-    }
+  components: {
+    Copyright: () => import(/* webpackChunkName: 'copyright' */ './Copyright.vue')
   }
 }
 </script>

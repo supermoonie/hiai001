@@ -13,6 +13,14 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-zhifubaozhifu:before {
+    content: "\e613";
+}
+
+.icon-weixinzhifu:before {
+    content: "\e600";
+}
+
 .icon-windows:before {
     content: "\edd4";
 }
@@ -20,4 +28,5 @@
 .icon-apple:before {
     content: "\e881";
 }
+
 

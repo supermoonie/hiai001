@@ -7,30 +7,36 @@
         <el-row type="flex" justify="center" align="middle">
           <el-col>
             <div class="app-desc">
-              {{appName}} {{appDesc}}
+              {{ appName }} {{ appDesc }}
             </div>
           </el-col>
         </el-row>
         <el-row :gutter="20">
-          <el-col :xs="24" v-for="(cardInfo, index) in cardInfos" :key="index" :sm="span" :md="span" :lg="span" :xl="span" style="padding: 10px;">
+          <el-col :xs="24" v-for="(cardInfo, index) in cardInfos" :key="index" :sm="span" :md="span" :lg="span"
+                  :xl="span" style="padding: 10px;">
             <el-card shadow="hover">
-              <div class="card-name">{{cardInfo['cardName']}}</div>
-              <div class="card-desc">{{cardInfo['cardDesc']}} | {{cardInfo['cardRemark']}}</div>
+              <div class="card-name">{{ cardInfo['cardName'] }}</div>
+              <div class="card-desc">{{ cardInfo['cardDesc'] }} | {{ cardInfo['cardRemark'] }}</div>
               <div class="valid-date">
-                有效期：{{cardInfo['validDate']}}{{cardInfo['validDateUnitDesc']}}
+                有效期：{{ cardInfo['validDate'] }}{{ cardInfo['validDateUnitDesc'] }}
                 <i class="valid-date-desc">(自激活日开始计算)</i>
               </div>
               <div class="bind-qty">
-                可绑定设备数量：{{cardInfo['bindQty']}} 台
+                可绑定设备数量：{{ cardInfo['bindQty'] }} 台
               </div>
               <div class="card-price">
-                <i class="rmb">￥ </i>{{cardInfo['cardPrice']}}
+                <i class="rmb">￥ </i>{{ cardInfo['cardPrice'] }}
                 <i class="card-market-price" v-if="cardInfo['cardPrice'] < cardInfo['marketPrice']">
-                  <i class="rmb">￥ </i>{{cardInfo['marketPrice']}}
+                  <i class="rmb">￥ </i>{{ cardInfo['marketPrice'] }}
                 </i>
               </div>
               <div class="buy">
-                <el-button type="primary" size="medium" icon="el-icon-shopping-cart-full" round>购 买</el-button>
+                <el-link :underline="false"
+                         :href="`confirm.html?appCode=${appCode}&cardId=${cardInfo['cardId']}&cardPrice=${cardInfo['cardPrice']}`"
+                         target="_blank">
+                  <el-button type="primary" size="medium" icon="el-icon-shopping-cart-full" round>购 买
+                  </el-button>
+                </el-link>
               </div>
             </el-card>
           </el-col>
@@ -71,7 +77,6 @@
                   <p class="support-desc">添加客服</p>
                 </el-col>
               </el-row>
-
             </el-card>
           </el-col>
         </el-row>
@@ -113,10 +118,9 @@ export default {
         lock: true,
         text: '加载中...',
         spinner: 'el-icon-loading',
-        background: 'rgba(0, 0, 0, 0.7)'
+        background: 'rgba(0, 0, 0, 0.6)'
       })
       httpClient.get('/fast-cut/app/info?appCode=FastCut').then(data => {
-        console.log(data)
         this.appCode = data['appCode']
         this.appName = data['appName']
         this.appDesc = data['appDesc']
@@ -139,6 +143,7 @@ export default {
 .container {
   padding: 30px 16px;
 }
+
 .app-desc {
   width: 100%;
   text-align: center;
@@ -148,6 +153,7 @@ export default {
   padding: 0 0 20px 0;
   font-weight: bold;
 }
+
 .card-name {
   width: 100%;
   text-align: center;
@@ -157,6 +163,7 @@ export default {
   font-weight: bold;
   padding: 10px 0;
 }
+
 .card-desc {
   width: 100%;
   text-align: center;
@@ -165,6 +172,7 @@ export default {
   letter-spacing: 2px;
   padding: 10px 0;
 }
+
 .card-price {
   width: 100%;
   text-align: center;
@@ -173,6 +181,7 @@ export default {
   letter-spacing: 2px;
   padding: 10px 0;
 }
+
 .valid-date {
   width: 100%;
   text-align: center;
@@ -181,10 +190,12 @@ export default {
   letter-spacing: 2px;
   padding: 10px 0;
 }
+
 .valid-date-desc {
   font-size: 12px;
   font-style: normal;
 }
+
 .bind-qty {
   width: 100%;
   text-align: center;
@@ -193,10 +204,12 @@ export default {
   letter-spacing: 2px;
   padding: 10px 0;
 }
+
 .rmb {
   font-style: normal;
   font-size: 24px;
 }
+
 .card-price {
   width: 100%;
   text-align: center;
@@ -204,44 +217,64 @@ export default {
   color: cornflowerblue;
   letter-spacing: 2px;
   padding: 10px 0;
+
   .card-market-price {
     font-size: 24px;
     font-style: normal;
     text-decoration: line-through;
   }
 }
+
 .buy {
   width: 100%;
   text-align: center;
   padding: 10px 0;
-  button {
+
+  a {
     width: 100%;
-  }
-  .el-button--primary {
-    background-color: cornflowerblue;
-    border-color: cornflowerblue;
-    &:hover {
-      background-color: #409EFF;
-      border-color: #409EFF;
+
+    .el-link--inner {
+      width: 100%;
+
+      button {
+        width: 100%;
+      }
+
+      .el-button--primary {
+        background-color: cornflowerblue;
+        border-color: cornflowerblue;
+
+        &:hover {
+          background-color: #409EFF;
+          border-color: #409EFF;
+        }
+      }
     }
   }
+
+
 }
+
 .faq-title {
   font-size: 16px;
   color: #333333;
   font-weight: bold;
 }
+
 .faq-content {
   padding-left: 10px;
+
   .faq-item {
     font-size: 16px;
     color: #7f8c8d;
   }
 }
+
 .support-qr {
   width: auto;
   height: 183px;
 }
+
 .support-desc {
   font-size: 16px;
   color: #333333;
