@@ -41,17 +41,18 @@
       <div class="container">
         <div class="pay-type">
           <el-row :gutter="20">
-<!--            <el-col :xs="24" :sm="12" :md="12" :lg="12"-->
-<!--                    :xl="12" style="padding: 10px;">-->
-<!--              <el-button type="primary" round size="small"><i class="iconfont icon-zhifubaozhifu"></i></el-button>-->
-<!--            </el-col>-->
+            <!--            <el-col :xs="24" :sm="12" :md="12" :lg="12"-->
+            <!--                    :xl="12" style="padding: 10px 10px 0 10px;">-->
+            <!--              <el-button type="primary" round size="mini"><i class="iconfont icon-zhifubaozhifu"></i></el-button>-->
+            <!--            </el-col>-->
             <el-col :xs="24" :sm="24" :md="24" :lg="24"
                     :xl="24" style="padding: 10px;">
-              <el-button type="success" round size="mini"><i class="iconfont icon-weixinzhifu"></i></el-button>
+              <el-button type="success" round size="mini" @click="handlePay"><i class="iconfont icon-weixinzhifu"></i>
+              </el-button>
             </el-col>
           </el-row>
           <el-row :gutter="20">
-            <el-col style="padding: 10px;">
+            <el-col style="padding: 0 10px 10px 10px;">
               <el-button round>查询支付结果</el-button>
             </el-col>
           </el-row>
@@ -60,6 +61,24 @@
     </div>
 
     <Copyright/>
+
+    <el-drawer
+        :title="`请使用${payTypeDesc}扫码支付`"
+        :close-on-press-escape="false"
+        :destroy-on-close="false"
+        :wrapperClosable="false"
+        :withHeader="true"
+        :modal="true"
+        :modal-append-to-body="true"
+        :size="'60%'"
+        :visible.sync="payDrawer"
+        :direction="payDirection"
+        :before-close="handlePayClose">
+      <div class="qr-content">
+        <qr-code style="max-width: 256px;" :text="codeUrl"></qr-code>
+      </div>
+    </el-drawer>
+
   </div>
 </template>
 
@@ -80,16 +99,56 @@ export default {
       totalPrice: '',
       orderCode: '',
       orderRemark: '',
-      bindQty: 1
+      bindQty: 1,
+      payDrawer: false,
+      payDirection: 'btt',
+      payCode: '',
+      payAmount: '',
+      payType: 0,
+      payTypeDesc: '',
+      codeUrl: ''
     }
   },
   mounted() {
     const params = new Proxy(new URLSearchParams(window.location.search), {
       get: (searchParams, prop) => searchParams.get(prop),
     })
-    this.createOrder(params.appCode, params.cardId, params.cardPrice)
+    this.createOrder(params['appCode'], params['cardId'], params['cardPrice'])
   },
   methods: {
+    handlePayClose() {
+      httpClient.get(`/fast-cut/pay/order/status?orderCode=${this.orderCode}&payType=1`)
+          .then(data => {
+            console.log(data)
+          }).finally(() => {
+            this.payDrawer = false
+          })
+    },
+    handlePay() {
+      this.createPayOrder()
+    },
+    createPayOrder() {
+      const _loading = this.$loading({
+        lock: true,
+        text: '请求中...',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.6)'
+      })
+      httpClient.postForm('/fast-cut/pay/order/create', {
+        'orderCode': this.orderCode,
+        'payType': 1
+      }).then(data => {
+        console.log(data)
+        this.payCode = data['payCode']
+        this.payAmount = data['payAmount']
+        this.payType = data['payType']
+        this.payTypeDesc = data['payTypeDesc']
+        this.codeUrl = data['codeUrl']
+        this.payDrawer = true
+      }).finally(() => {
+        _loading.close()
+      })
+    },
     createOrder(appCode, cardId, cardPrice) {
       const _loading = this.$loading({
         lock: true,
@@ -194,12 +253,43 @@ export default {
 
 .pay-type {
   width: 100%;
+
   .el-button {
     width: 100%;
   }
+
   .iconfont {
     font-size: 22px;
   }
+}
+
+.qr-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.el-drawer__container {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.el-drawer__header {
+  margin-bottom: 10px;
+
+  span {
+    text-align: center;
+  }
+
+  .el-drawer__close-btn {
+    position: absolute;
+    right: 10px;
+  }
+}
+
+.el-drawer__body {
+  border-top: solid #ccc 1px;
 }
 
 </style>

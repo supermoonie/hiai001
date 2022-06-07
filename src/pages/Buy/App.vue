@@ -84,6 +84,7 @@
     </div>
 
     <Footer/>
+
   </div>
 </template>
 
@@ -106,7 +107,7 @@ export default {
       appName: '',
       appDesc: '',
       cardInfos: [],
-      span: 12
+      span: 12,
     }
   },
   mounted() {
