@@ -3,7 +3,7 @@
     <Header :current="'buy'"/>
 
     <div class="dark">
-      <div class="container">
+      <div class="container" style="padding: 30px 16px">
         <el-row type="flex" justify="center" align="middle">
           <el-col>
             <div class="app-desc">
@@ -83,6 +83,10 @@
       </div>
     </div>
 
+    <div style="max-width: 1056px; margin: 0 auto;">
+      <el-divider></el-divider>
+    </div>
+
     <Footer/>
 
   </div>
@@ -122,13 +126,12 @@ export default {
         background: 'rgba(0, 0, 0, 0.6)'
       })
       httpClient.get('/fast-cut/app/info?appCode=FastCut').then(data => {
+        if (!data) return
         this.appCode = data['appCode']
         this.appName = data['appName']
         this.appDesc = data['appDesc']
         this.cardInfos = data['cardInfos']
         this.span = Math.floor(24 / this.cardInfos.length)
-      }).catch(err => {
-        console.error(err)
       }).finally(() => {
         _loading.close()
       })
@@ -140,10 +143,6 @@ export default {
 <style lang="less">
 @import url('../../styles/global.css');
 @import url('../../styles/iconfont.css');
-
-.container {
-  padding: 30px 16px;
-}
 
 .app-desc {
   width: 100%;

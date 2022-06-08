@@ -1,5 +1,8 @@
 <template>
   <div>
+
+    <Header/>
+
     <div class="dark">
       <div class="container">
         <div class="title">
@@ -41,26 +44,28 @@
       <div class="container">
         <div class="pay-type">
           <el-row :gutter="20">
-            <!--            <el-col :xs="24" :sm="12" :md="12" :lg="12"-->
-            <!--                    :xl="12" style="padding: 10px 10px 0 10px;">-->
-            <!--              <el-button type="primary" round size="mini"><i class="iconfont icon-zhifubaozhifu"></i></el-button>-->
-            <!--            </el-col>-->
-            <el-col :xs="24" :sm="24" :md="24" :lg="24"
-                    :xl="24" style="padding: 10px;">
+            <el-col style="padding: 10px;">
               <el-button type="success" round size="mini" @click="handlePay"><i class="iconfont icon-weixinzhifu"></i>
               </el-button>
             </el-col>
           </el-row>
           <el-row :gutter="20">
             <el-col style="padding: 0 10px 10px 10px;">
-              <el-button round>查询支付结果</el-button>
+              <el-tooltip content="支付宝支付，即将支持" placement="top">
+                <el-button type="primary" :disabled="false" round size="mini"><i class="iconfont icon-zhifubaozhifu"></i></el-button>
+              </el-tooltip>
             </el-col>
           </el-row>
+<!--          <el-row :gutter="20">-->
+<!--            <el-col style="padding: 0 10px 10px 10px;">-->
+<!--              <el-button round>查询支付结果</el-button>-->
+<!--            </el-col>-->
+<!--          </el-row>-->
         </div>
       </div>
     </div>
 
-    <Copyright/>
+    <Footer/>
 
     <el-drawer
         :title="`请使用${payTypeDesc}扫码支付`"
@@ -75,7 +80,19 @@
         :direction="payDirection"
         :before-close="handlePayClose">
       <div class="qr-content">
-        <qr-code style="max-width: 256px;" :text="codeUrl"></qr-code>
+        <div>
+          <el-row>
+            <el-col>
+              <qr-code style="max-width: 256px;" :text="codeUrl"></qr-code>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col style="text-align: center; margin-top: 16px;">
+              <el-link type="primary" :underline="true" :href="`result.html?orderCode=${this.orderCode}`">支付完成，未自动跳转，点击此链接
+              </el-link>
+            </el-col>
+          </el-row>
+        </div>
       </div>
     </el-drawer>
 
@@ -86,11 +103,13 @@
 
 import httpClient from "../../util/HttpClient";
 import Api from "@/api/Api"
+import {Message} from "element-ui";
 
 export default {
   name: 'Confirm',
   components: {
-    Copyright: () => import(/* webpackChunkName: 'copyright' */ '../../components/Copyright.vue')
+    Header: () => import(/* webpackChunkName: 'header' */ '../../components/Header.vue'),
+    Footer: () => import(/* webpackChunkName: 'footer' */ '../../components/Footer.vue')
   },
   metaInfo: {
     title: '订单确认'
@@ -121,18 +140,19 @@ export default {
     async handlePayClose() {
       this.interval && clearInterval(this.interval)
       let status = await Api.PayOrderApi.getPayOrderStatus(this.orderCode, 1)
-      console.log(status)
       status && (location.href = `result.html?payCode=${this.payCode}`)
       this.payDrawer = false
     },
     async handlePay() {
       this.interval && clearInterval(this.interval)
-      await this.createPayOrder()
+      let flag = await this.createPayOrder()
+      if (!flag) return
       this.interval = setInterval(async () => {
         let status = await Api.PayOrderApi.getPayOrderStatus(this.orderCode, 1)
         console.log(status)
-        status && clearInterval(this.interval) && (location.href = `result.html?payCode=${this.payCode}`)
-      }, 1000)
+        status && clearInterval(this.interval)
+        status && (location.href = `result.html?orderCode=${this.orderCode}`)
+      }, 2100)
     },
     async createPayOrder() {
       const _loading = this.$loading({
@@ -141,7 +161,23 @@ export default {
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.6)'
       })
-      let data = await Api.PayOrderApi.createPayOrder(this.orderCode, 1)
+      let data;
+      try {
+        data = await Api.PayOrderApi.createPayOrder(this.orderCode, 1)
+      } catch (err) {
+        Message({
+          message: err,
+          type: 'warning',
+          duration: 2000,
+          center: true
+        })
+        _loading.close()
+        return false
+      }
+      if (!data) {
+        _loading.close()
+        return false
+      }
       console.log(data)
       this.payCode = data['payCode']
       this.payAmount = data['payAmount']
@@ -150,6 +186,7 @@ export default {
       this.codeUrl = data['codeUrl']
       this.payDrawer = true
       _loading.close();
+      return true
     },
     createOrder(appCode, cardId, cardPrice) {
       const _loading = this.$loading({
@@ -163,6 +200,7 @@ export default {
         'cardId': cardId,
         'cardPrice': cardPrice
       }).then(data => {
+        if (!data) return
         console.log(data)
         this.totalPrice = data['totalPrice']
         this.orderCode = data['orderCode']

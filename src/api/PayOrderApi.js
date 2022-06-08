@@ -9,6 +9,9 @@ const PayOrderApi = {
             'orderCode': orderCode,
             'payType': payType
         });
+    },
+    async getResult(orderCode) {
+        return await httpClient.asyncGet(`/fast-cut/pay/result?orderCode=${orderCode}`)
     }
 }
 

@@ -27,11 +27,19 @@
       </div>
     </div>
 
+    <div style="max-width: 1056px; margin: 0 auto;">
+      <el-divider></el-divider>
+    </div>
+
     <Copyright/>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import {Divider} from "element-ui"
+Vue.use(Divider)
+
 export default {
   name: 'Footer',
   components: {
@@ -41,5 +49,6 @@ export default {
 </script>
 
 <style scoped lang="less">
-
+@import url('../styles/global.css');
+@import url('../styles/iconfont.css');
 </style>

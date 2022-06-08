@@ -19,7 +19,8 @@ httpClient.interceptors.request.use(
         Message({
             message: '网络异常，请稍后重试！',
             type: 'error',
-            duration: 2000
+            duration: 2000,
+            center: true
         })
     });
 // 响应拦截器
@@ -27,27 +28,22 @@ httpClient.interceptors.response.use(
     response => {
         if (response.status === 200) {
             if (response.data['code'] === 2000) {
-                return Promise.resolve(response.data['data']);
+                return Promise.resolve(response.data['data'])
             } else {
-                console.error(response.data);
-                const msg = response.data['message'];
-                Message({
-                    message: msg,
-                    type: 'error',
-                    duration: 2000
-                })
-                return Promise.reject(response.data['data']);
+                return Promise.reject(response.data['message'])
             }
         } else {
-            return Promise.reject(response);
+            return Promise.reject("系统异常，请稍后再试")
         }
     }, error => {
         console.error(error);
         Message({
-            message: '网络异常，请稍后重试！',
+            message: "系统异常，请稍后再试",
             type: 'error',
-            duration: 2000
+            duration: 2000,
+            center: true
         })
+        return Promise.resolve(false)
     });
 
 httpClient.asyncGet = async (url, config) => {
