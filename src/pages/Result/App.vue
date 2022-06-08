@@ -13,7 +13,7 @@
 
     <div class="result">
       <div class="container">
-        <el-descriptions :column="1" :border="true" :colon="true">
+        <el-descriptions :column="1" :border="true" :colon="true" label-class-name="des-label">
           <el-descriptions-item label="订单号:">{{ orderInfo['orderCode'] }}</el-descriptions-item>
           <el-descriptions-item label="订单金额:">{{ orderInfo['payAmount'] }}</el-descriptions-item>
           <el-descriptions-item label="订单备注:">{{ orderInfo['orderRemark'] }}</el-descriptions-item>
@@ -75,13 +75,15 @@ export default {
     onCopySuccess() {
       this.$message({
         message: '拷贝成功',
-        type: 'success'
+        type: 'success',
+        center: true
       })
     },
     onCopyError() {
       this.$message({
         message: '拷贝失败',
-        type: 'error'
+        type: 'error',
+        center: true
       })
     },
     async _getResult() {
@@ -91,7 +93,15 @@ export default {
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.6)'
       })
-      this.orderInfo = await Api.PayOrderApi.getResult(this.orderCode)
+      try {
+        this.orderInfo = await Api.PayOrderApi.getResult(this.orderCode)
+      } catch (err) {
+        this.$message({
+          message: err,
+          type: 'error',
+          center: true
+        })
+      }
       _loading.close()
     }
   }
@@ -112,6 +122,10 @@ export default {
 
 .result {
   padding: 10px;
+}
+
+.des-label {
+  width: 45%;
 }
 
 </style>

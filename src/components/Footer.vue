@@ -15,6 +15,10 @@
         <div><a href="about.html" target="_blank">联系我们</a></div>
       </div>
       <div class="footer-item">
+        <div class="footer-classify">激活码</div>
+        <div><a href="find.html" target="_blank">忘记激活码</a></div>
+      </div>
+      <div class="footer-item">
         <div class="footer-classify">合作与资源</div>
         <!--        <div><a href="ppt.html" target="_blank">向团队介绍 FastCut</a></div>-->
         <div><a href="enterprise.html" target="_blank">企业定制</a></div>
