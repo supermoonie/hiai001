@@ -1,7 +1,7 @@
 import axios from "axios";
 import qs from 'qs';
 import {Message} from 'element-ui'
-import {BASE_URL} from '../config/env';
+import {BASE_URL} from '@/config/env';
 
 const httpClient = axios.create({
     baseURL: BASE_URL,
@@ -19,7 +19,7 @@ httpClient.interceptors.request.use(
         Message({
             message: '网络异常，请稍后重试！',
             type: 'error',
-            duration: 1500
+            duration: 2000
         })
     });
 // 响应拦截器
@@ -34,7 +34,7 @@ httpClient.interceptors.response.use(
                 Message({
                     message: msg,
                     type: 'error',
-                    duration: 1500
+                    duration: 2000
                 })
                 return Promise.reject(response.data['data']);
             }
@@ -46,9 +46,22 @@ httpClient.interceptors.response.use(
         Message({
             message: '网络异常，请稍后重试！',
             type: 'error',
-            duration: 1500
+            duration: 2000
         })
     });
+
+httpClient.asyncGet = async (url, config) => {
+    return await httpClient.get(url, config)
+}
+
+httpClient.asyncPostForm = async (url, data, config) => {
+    return await httpClient.post(url, qs.stringify(data), {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=utf8'
+        },
+        ...config
+    })
+};
 
 httpClient.postForm = (url, data, config) => {
     return httpClient.post(url, qs.stringify(data), {

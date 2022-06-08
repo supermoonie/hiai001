@@ -85,6 +85,7 @@
 <script>
 
 import httpClient from "../../util/HttpClient";
+import Api from "@/api/Api"
 
 export default {
   name: 'Confirm',
@@ -106,7 +107,8 @@ export default {
       payAmount: '',
       payType: 0,
       payTypeDesc: '',
-      codeUrl: ''
+      codeUrl: '',
+      interval: undefined
     }
   },
   mounted() {
@@ -116,38 +118,38 @@ export default {
     this.createOrder(params['appCode'], params['cardId'], params['cardPrice'])
   },
   methods: {
-    handlePayClose() {
-      httpClient.get(`/fast-cut/pay/order/status?orderCode=${this.orderCode}&payType=1`)
-          .then(data => {
-            console.log(data)
-          }).finally(() => {
-            this.payDrawer = false
-          })
+    async handlePayClose() {
+      this.interval && clearInterval(this.interval)
+      let status = await Api.PayOrderApi.getPayOrderStatus(this.orderCode, 1)
+      console.log(status)
+      status && (location.href = `result.html?payCode=${this.payCode}`)
+      this.payDrawer = false
     },
-    handlePay() {
-      this.createPayOrder()
+    async handlePay() {
+      this.interval && clearInterval(this.interval)
+      await this.createPayOrder()
+      this.interval = setInterval(async () => {
+        let status = await Api.PayOrderApi.getPayOrderStatus(this.orderCode, 1)
+        console.log(status)
+        status && clearInterval(this.interval) && (location.href = `result.html?payCode=${this.payCode}`)
+      }, 1000)
     },
-    createPayOrder() {
+    async createPayOrder() {
       const _loading = this.$loading({
         lock: true,
         text: '请求中...',
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.6)'
       })
-      httpClient.postForm('/fast-cut/pay/order/create', {
-        'orderCode': this.orderCode,
-        'payType': 1
-      }).then(data => {
-        console.log(data)
-        this.payCode = data['payCode']
-        this.payAmount = data['payAmount']
-        this.payType = data['payType']
-        this.payTypeDesc = data['payTypeDesc']
-        this.codeUrl = data['codeUrl']
-        this.payDrawer = true
-      }).finally(() => {
-        _loading.close()
-      })
+      let data = await Api.PayOrderApi.createPayOrder(this.orderCode, 1)
+      console.log(data)
+      this.payCode = data['payCode']
+      this.payAmount = data['payAmount']
+      this.payType = data['payType']
+      this.payTypeDesc = data['payTypeDesc']
+      this.codeUrl = data['codeUrl']
+      this.payDrawer = true
+      _loading.close();
     },
     createOrder(appCode, cardId, cardPrice) {
       const _loading = this.$loading({
