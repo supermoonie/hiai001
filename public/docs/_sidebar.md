@@ -1,6 +1,6 @@
 <!-- docs/_sidebar.md -->
 
-* [首页](/)
+* [快剪](/)
 * 资源
-    * [音乐音效](resources/music.md)
+    * [音乐音效](pages/music.md)
 

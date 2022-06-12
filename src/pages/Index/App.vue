@@ -6,10 +6,12 @@
       <div class="container">
         <div class="main">
           <div class="slogan">
-            <div class="title">新一代视频批量剪辑平台</div>
-            <div class="description">批量 合成、剪辑、去重、特效、配音、字幕、水印</div>
+            <div class="title">新一代视频智能编辑平台</div>
+            <div class="description">把复杂的视频编辑工作一键化，人人都是视频处理专家</div>
+            <div class="description">拥有属于自己的原创视频</div>
             <div class="btns">
-              <div id="main-download" class="btn main-download">下载 ...
+              <div id="main-download" class="btn main-download">
+                <el-link href="https://www.123pan.com/s/Iw4DVv-LjSq3" target="_blank" :underline="false" style="color: #ffffff;">下载 ...</el-link>
               </div>
               <div class="btn light" @click="watchVideo">观看视频</div>
             </div>
@@ -43,10 +45,12 @@
           <div class="content-desc"><span id="option">拥有明亮、暗黑两种主题</span><br>
             自动跟随系统主题变化，让黑夜不再刺眼
           </div>
-          <img style=" max-width: 912px; width: 100%;" src="../../assets/mac-fastcut-01.png" alt="">
+<!--          <img style=" max-width: 912px; width: 100%;" src="../../assets/dark_light.png" alt="">-->
           <div class="fastcut-panel-img">
-            <img style="max-width: 372px;max-height: 437px;" src="../../assets/mac-fastcut-02.png" alt="">
-            <img style="max-width: 372px;max-height: 456px;" src="../../assets/mac-fastcut-03.png" alt="">
+            <el-image :src="darkImage" :preview-src-list="[darkImage, lightImage]"></el-image>
+            <el-image :src="lightImage" :preview-src-list="[darkImage, lightImage]"></el-image>
+<!--            <img src="../../assets/dark.jpg" alt="dark">-->
+<!--            <img src="../../assets/light.png" alt="light">-->
           </div>
         </div>
       </div>
@@ -74,13 +78,17 @@
             <div class="logo iconfont icon-windows"></div>
             <div class="remark">Windows 7, 10, 11</div>
             <div>
-              <div class="download">Windows 64 位版本</div>
+              <div class="download">
+                <el-link href="https://www.123pan.com/s/Iw4DVv-ijSq3" :underline="false" target="_blank">Windows 64 位版本</el-link>
+              </div>
             </div>
           </div>
           <div>
             <div class="logo iconfont icon-apple"></div>
             <div class="remark">macOS 10.10+</div>
-            <div class="download">MacOS 版本</div>
+            <div class="download">
+              <el-link href="https://www.123pan.com/s/Iw4DVv-zjSq3" :underline="false" target="_blank">MacOS 版本</el-link>
+            </div>
           </div>
         </div>
       </div>
@@ -108,6 +116,8 @@ export default {
   },
   data: () => {
     return {
+      darkImage: require('../../assets/dark.png'),
+      lightImage: require('../../assets/light.png'),
       comments: [
         {
           say: "虚位以待",
@@ -152,4 +162,10 @@ export default {
 <style lang="less">
 @import url('../../styles/global.css');
 @import url('../../styles/iconfont.css');
+.fastcut-panel-img {
+  img {
+    padding: 5px;
+    max-width: 480px;
+  }
+}
 </style>

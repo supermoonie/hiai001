@@ -22,7 +22,7 @@ body {
 }
 
 .logo {
-    height: 28px;
+    height: 48px;
 }
 
 .menu a {
@@ -256,6 +256,10 @@ body {
     color: #fff;
     cursor: pointer;
     user-select: none;
+}
+
+.download .el-link.el-link--default {
+    color: #ffffff;
 }
 
 .platform .download:hover {

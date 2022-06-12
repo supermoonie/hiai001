@@ -2,7 +2,7 @@
   <div>
     <div class="footer">
       <div class="qrcode footer-item">
-        <img src="../assets/qr-code.png" alt>
+        <img src="../assets/qr-code.jpg" alt>
         <div>
           <div>关注公众号</div>
           <div class="footer-secondary">了解 教程、最新发布等</div>
