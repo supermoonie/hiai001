@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :current="'index'"/>
+    <Header :current="'index'" :app-code="'FastCut'"/>
 
     <div class="dark">
       <div class="container">
@@ -15,7 +15,6 @@
               </div>
               <div class="btn light" @click="watchVideo">观看视频</div>
             </div>
-            <div id="version"></div>
           </div>
           <div class="video">
             <img src="../../assets/video-play-1.png" @click="watchVideo" alt="">
@@ -31,7 +30,7 @@
           <div class="content-desc">支持Windows、Macos</div>
           <br>
           <video muted="" autoplay="" loop="" src="../../assets/home_page-2.mp4"
-                 style=" max-width: 950px; width: 100%;">
+                 style="max-width: 950px; width: 100%;">
             你的浏览器不支持 <code>video</code> 标签.
           </video>
         </div>
@@ -73,7 +72,6 @@
     <div class="dark" id="download">
       <div class="container">
         <div class="platform">
-
           <div>
             <div class="logo iconfont icon-windows"></div>
             <div class="remark">Windows 7, 10, 11</div>

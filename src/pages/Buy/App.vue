@@ -115,7 +115,11 @@ export default {
     }
   },
   mounted() {
-    this._getAppWithCardInfo();
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+      get: (searchParams, prop) => searchParams.get(prop),
+    })
+    this.appCode = params['appCode']
+    this._getAppWithCardInfo()
   },
   methods: {
     _getAppWithCardInfo() {
@@ -125,13 +129,19 @@ export default {
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.6)'
       })
-      httpClient.get('/fast-cut/app/info?appCode=FastCut').then(data => {
+      httpClient.get(`/fast-cut/app/info?appCode=${this.appCode}`).then(data => {
         if (!data) return
         this.appCode = data['appCode']
         this.appName = data['appName']
         this.appDesc = data['appDesc']
         this.cardInfos = data['cardInfos']
         this.span = Math.floor(24 / this.cardInfos.length)
+      }).catch(err => {
+        this.$message({
+          message: err,
+          type: 'error',
+          center: true
+        })
       }).finally(() => {
         _loading.close()
       })
