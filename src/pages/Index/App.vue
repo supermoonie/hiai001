@@ -11,7 +11,7 @@
             <div class="description">拥有属于自己的原创视频</div>
             <div class="btns">
               <div id="main-download" class="btn main-download">
-                <el-link href="https://www.123pan.com/s/Iw4DVv-LjSq3" target="_blank" :underline="false" style="color: #ffffff;">下载 ...</el-link>
+                <el-link href="https://www.123pan.com/s/Iw4DVv-JTlq3" target="_blank" :underline="false" style="color: #ffffff;">下载 ...</el-link>
               </div>
               <div class="btn light" @click="watchVideo">观看视频</div>
             </div>
@@ -77,7 +77,7 @@
             <div class="remark">Windows 7, 10, 11</div>
             <div>
               <div class="download">
-                <el-link href="https://www.123pan.com/s/Iw4DVv-ijSq3" :underline="false" target="_blank">Windows 64 位版本</el-link>
+                <el-link href="https://www.123pan.com/s/Iw4DVv-MTlq3" :underline="false" target="_blank">Windows 64 位版本</el-link>
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@
             <div class="logo iconfont icon-apple"></div>
             <div class="remark">macOS 10.10+</div>
             <div class="download">
-              <el-link href="https://www.123pan.com/s/Iw4DVv-zjSq3" :underline="false" target="_blank">MacOS 版本</el-link>
+              <el-link href="https://www.123pan.com/s/Iw4DVv-ITlq3" :underline="false" target="_blank">MacOS 版本</el-link>
             </div>
           </div>
         </div>
