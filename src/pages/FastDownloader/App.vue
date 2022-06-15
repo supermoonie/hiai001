@@ -85,7 +85,7 @@
             <div class="logo iconfont icon-apple"></div>
             <div class="remark">macOS 10.10+</div>
             <div class="download">
-              <el-link href="https://www.123pan.com/s/Iw4DVv-RTlq3" :underline="false" target="_blank">MacOS 版本
+              <el-link href="https://www.123pan.com/s/Iw4DVv-DTlq3" :underline="false" target="_blank">MacOS 版本
               </el-link>
             </div>
           </div>
