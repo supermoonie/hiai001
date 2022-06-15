@@ -1,4 +1,4 @@
 <!-- _navbar.md -->
 
-* [官网](http://hiai001.com/)
-* [购买](http://hiai001.com/buy.html)
+* [官网](https://hiai001.com/)
+* [购买](https://hiai001.com/buy.html)

@@ -4,7 +4,7 @@ switch (process.env.NODE_ENV) {
     BASE_URL = 'http://127.0.0.1:8080'
     break
   case 'prod':
-    BASE_URL = 'http://hiai001.com'
+    BASE_URL = 'https://hiai001.com'
     break
 }
 export {
