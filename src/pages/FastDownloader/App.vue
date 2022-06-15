@@ -16,7 +16,7 @@
             </el-row>
             <div class="description">支持抖音、YouTube、TikTok、快手、火山、西瓜视频</div>
             <div class="description">等众多短视频平台</div>
-            <el-link class="download-btn" href="https://www.123pan.com/s/Iw4DVv-fTlq3" target="_blank"
+            <el-link class="download-btn" href="https://www.123pan.com/s/Iw4DVv-NTlq3" target="_blank"
                      :underline="false">
               <el-button>下载 ...</el-button>
             </el-link>
@@ -75,7 +75,7 @@
             <div class="remark">Windows 7, 10, 11</div>
             <div>
               <div class="download">
-                <el-link href="https://www.123pan.com/s/Iw4DVv-aTlq3" :underline="false" target="_blank">Windows 64
+                <el-link href="https://www.123pan.com/s/Iw4DVv-OTlq3" :underline="false" target="_blank">Windows 64
                   位版本
                 </el-link>
               </div>
@@ -85,7 +85,7 @@
             <div class="logo iconfont icon-apple"></div>
             <div class="remark">macOS 10.10+</div>
             <div class="download">
-              <el-link href="https://www.123pan.com/s/Iw4DVv-BTlq3" :underline="false" target="_blank">MacOS 版本
+              <el-link href="https://www.123pan.com/s/Iw4DVv-RTlq3" :underline="false" target="_blank">MacOS 版本
               </el-link>
             </div>
           </div>
