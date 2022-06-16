@@ -75,7 +75,7 @@
             <div class="remark">Windows 7, 10, 11</div>
             <div>
               <div class="download">
-                <el-link href="https://www.123pan.com/s/Iw4DVv-OTlq3" :underline="false" target="_blank">Windows 64
+                <el-link href="https://www.123pan.com/s/Iw4DVv-0Tlq3" :underline="false" target="_blank">Windows 64
                   位版本
                 </el-link>
               </div>
