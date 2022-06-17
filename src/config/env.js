@@ -7,7 +7,7 @@ switch (process.env.NODE_ENV) {
     break
   case 'prod':
     BASE_URL = 'https://hiai001.com';
-    DOC_URL = 'http://hiai001.com';
+    DOC_URL = 'https://hiai001.com';
     break
 }
 export {

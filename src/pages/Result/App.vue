@@ -37,6 +37,45 @@
 
     <div>
       <div class="container">
+        <el-row :gutter="20">
+          <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" style="padding: 10px;">
+            <el-card shadow="never" style="height: 227px">
+              <div class="faq-title">常见问题：</div>
+              <div class="faq-content">
+                <p class="faq-item">
+                  1、请妥善保管卡号，勿泄露给他人
+                </p>
+                <p class="faq-item">
+                  2、卡号未激活，可联系客服进行退款
+                </p>
+                <p class="faq-item">
+                  3、电脑重装系统，相当于更换设备
+                </p>
+                <p class="faq-item">
+                  4、如遇到任何问题，请联系客服解决
+                </p>
+              </div>
+            </el-card>
+          </el-col>
+          <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" style="padding: 10px;">
+            <el-card shadow="never">
+              <el-row type="flex" justify="center" align="middle">
+                <el-col :span="12">
+                  <el-image :src="supportQr" alt="" fit="fill" class="support-qr"></el-image>
+                </el-col>
+                <el-col :span="12">
+                  <p class="support-desc">扫描二维码</p>
+                  <p class="support-desc">添加客服</p>
+                </el-col>
+              </el-row>
+            </el-card>
+          </el-col>
+        </el-row>
+      </div>
+    </div>
+
+    <div>
+      <div class="container">
         <el-divider></el-divider>
       </div>
     </div>
@@ -61,6 +100,7 @@ export default {
   },
   data() {
     return {
+      supportQr: require('../../assets/support-qr.png'),
       orderInfo: {}
     }
   },
@@ -125,7 +165,17 @@ export default {
 }
 
 .des-label {
-  width: 45%;
+  width: 50%;
+}
+
+.support-qr {
+  width: auto;
+  height: 183px;
+}
+
+.support-desc {
+  font-size: 16px;
+  color: #333333;
 }
 
 </style>

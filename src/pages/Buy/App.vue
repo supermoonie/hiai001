@@ -106,7 +106,7 @@ export default {
   },
   data() {
     return {
-      supportQr: require('../../assets/support-qr.jpg'),
+      supportQr: require('../../assets/support-qr.png'),
       appCode: '',
       appName: '',
       appDesc: '',
