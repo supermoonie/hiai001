@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :current="'fastdownloader'" :app-code="'FastDownloader'"/>
+    <Header :active-index="'2'"/>
 
     <div class="dark">
       <div class="container">

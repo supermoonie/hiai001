@@ -10,24 +10,24 @@
       </div>
       <div class="footer-item">
         <div class="footer-classify">帮助</div>
-        <div><a href="help.html" target="_blank">帮助中心</a></div>
-        <div><a href="faq.html" target="_blank">常见问题</a></div>
-        <div><a href="about.html" target="_blank">联系我们</a></div>
+        <div><a href="help.html">帮助中心</a></div>
+        <div><a href="faq.html">常见问题</a></div>
+        <div><a href="about.html">联系我们</a></div>
       </div>
       <div class="footer-item">
         <div class="footer-classify">激活码</div>
-        <div><a href="find.html" target="_blank">忘记激活码</a></div>
+        <div><a href="find.html">忘记激活码</a></div>
       </div>
       <div class="footer-item">
         <div class="footer-classify">合作与资源</div>
         <!--        <div><a href="ppt.html" target="_blank">向团队介绍 FastCut</a></div>-->
-        <div><a href="enterprise.html" target="_blank">企业定制</a></div>
-        <div><a href="proxy.html" target="_blank">代理</a></div>
+        <div><a href="enterprise.html">企业定制</a></div>
+        <div><a href="proxy.html">代理</a></div>
       </div>
       <div class="footer-item">
         <div class="footer-classify">条款与隐私</div>
-        <div><a href="agreement.html" target="_blank">用户协议</a></div>
-        <div><a href="privacy.html" target="_blank">隐私政策</a></div>
+        <div><a href="agreement.html">用户协议</a></div>
+        <div><a href="privacy.html">隐私政策</a></div>
       </div>
     </div>
 

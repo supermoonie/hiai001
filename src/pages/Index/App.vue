@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :current="'index'" :app-code="'FastCut'"/>
+    <Header :active-index="'1'"/>
 
     <div class="dark">
       <div class="container">
@@ -44,12 +44,9 @@
           <div class="content-desc"><span id="option">拥有明亮、暗黑两种主题</span><br>
             自动跟随系统主题变化，让黑夜不再刺眼
           </div>
-<!--          <img style=" max-width: 912px; width: 100%;" src="../../assets/dark_light.png" alt="">-->
           <div class="fastcut-panel-img">
             <el-image :src="darkImage" :preview-src-list="[darkImage, lightImage]"></el-image>
             <el-image :src="lightImage" :preview-src-list="[darkImage, lightImage]"></el-image>
-<!--            <img src="../../assets/dark.jpg" alt="dark">-->
-<!--            <img src="../../assets/light.png" alt="light">-->
           </div>
         </div>
       </div>
