@@ -8,6 +8,9 @@
       <el-menu-item index="2">
         <el-link href="fastdownloader.html">快下载</el-link>
       </el-menu-item>
+      <el-menu-item index="5">
+        <el-link href="publish_handy.html">随手发</el-link>
+      </el-menu-item>
       <el-menu-item index="3">
         <el-link href="/docs/index.html">教程</el-link>
       </el-menu-item>
@@ -39,5 +42,4 @@ export default {
 </script>
 
 <style scoped lang="less">
-
 </style>
