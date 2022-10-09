@@ -7,43 +7,43 @@
         <div class="main">
           <div style="padding: 16px;">
             <el-image :src="case01"
-              :preview-src-list="[case01, case02, case03, case04, case05, case06, case07, case08, case09, case10, case11, case12, case13]">
+              :preview-src-list="[case01, case02, case03, case04, case05, case07, case08, case09, case10, case11, case12, case13]">
             </el-image>
             <el-image :src="case02"
-              :preview-src-list="[case01, case02, case03, case04, case05, case06, case07, case08, case09, case10, case11, case12, case13]">
+              :preview-src-list="[case01, case02, case03, case04, case05, case07, case08, case09, case10, case11, case12, case13]">
             </el-image>
             <el-image :src="case03"
-              :preview-src-list="[case01, case02, case03, case04, case05, case06, case07, case08, case09, case10, case11, case12, case13]">
+              :preview-src-list="[case01, case02, case03, case04, case05, case07, case08, case09, case10, case11, case12, case13]">
             </el-image>
             <el-image :src="case04"
-              :preview-src-list="[case01, case02, case03, case04, case05, case06, case07, case08, case09, case10, case11, case12, case13]">
+              :preview-src-list="[case01, case02, case03, case04, case05, case07, case08, case09, case10, case11, case12, case13]">
             </el-image>
             <el-image :src="case05"
-              :preview-src-list="[case01, case02, case03, case04, case05, case06, case07, case08, case09, case10, case11, case12, case13]">
+              :preview-src-list="[case01, case02, case03, case04, case05, case07, case08, case09, case10, case11, case12, case13]">
             </el-image>
-            <el-image :src="case06"
-              :preview-src-list="[case01, case02, case03, case04, case05, case06, case07, case08, case09, case10, case11, case12, case13]">
-            </el-image>
+            <!-- <el-image :src="case06"
+              :preview-src-list="[case01, case02, case03, case04, case05, case07, case08, case09, case10, case11, case12, case13]">
+            </el-image> -->
             <el-image :src="case07"
-              :preview-src-list="[case01, case02, case03, case04, case05, case06, case07, case08, case09, case10, case11, case12, case13]">
+              :preview-src-list="[case01, case02, case03, case04, case05, case07, case08, case09, case10, case11, case12, case13]">
             </el-image>
             <el-image :src="case08"
-              :preview-src-list="[case01, case02, case03, case04, case05, case06, case07, case08, case09, case10, case11, case12, case13]">
+              :preview-src-list="[case01, case02, case03, case04, case05, case07, case08, case09, case10, case11, case12, case13]">
             </el-image>
             <el-image :src="case09"
-              :preview-src-list="[case01, case02, case03, case04, case05, case06, case07, case08, case09, case10, case11, case12, case13]">
+              :preview-src-list="[case01, case02, case03, case04, case05, case07, case08, case09, case10, case11, case12, case13]">
             </el-image>
             <el-image :src="case10"
-              :preview-src-list="[case01, case02, case03, case04, case05, case06, case07, case08, case09, case10, case11, case12, case13]">
+              :preview-src-list="[case01, case02, case03, case04, case05, case07, case08, case09, case10, case11, case12, case13]">
             </el-image>
             <el-image :src="case11"
-              :preview-src-list="[case01, case02, case03, case04, case05, case06, case07, case08, case09, case10, case11, case12, case13]">
+              :preview-src-list="[case01, case02, case03, case04, case05, case07, case08, case09, case10, case11, case12, case13]">
             </el-image>
             <el-image :src="case12"
-              :preview-src-list="[case01, case02, case03, case04, case05, case06, case07, case08, case09, case10, case11, case12, case13]">
+              :preview-src-list="[case01, case02, case03, case04, case05, case07, case08, case09, case10, case11, case12, case13]">
             </el-image>
             <el-image :src="case13"
-              :preview-src-list="[case01, case02, case03, case04, case05, case06, case07, case08, case09, case10, case11, case12, case13]">
+              :preview-src-list="[case01, case02, case03, case04, case05, case07, case08, case09, case10, case11, case12, case13]">
             </el-image>
           </div>
         </div>
