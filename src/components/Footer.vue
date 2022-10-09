@@ -14,10 +14,10 @@
         <div><a href="faq.html">常见问题</a></div>
         <div><a href="about.html">联系我们</a></div>
       </div>
-      <div class="footer-item">
+      <!-- <div class="footer-item">
         <div class="footer-classify">激活码</div>
         <div><a href="find.html">忘记激活码</a></div>
-      </div>
+      </div> -->
       <div class="footer-item">
         <div class="footer-classify">合作与资源</div>
         <!--        <div><a href="ppt.html" target="_blank">向团队介绍 FastCut</a></div>-->
@@ -35,13 +35,13 @@
       <el-divider></el-divider>
     </div>
 
-    <Copyright/>
+    <Copyright />
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import {Divider} from "element-ui"
+import { Divider } from "element-ui"
 Vue.use(Divider)
 
 export default {
